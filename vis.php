@@ -133,14 +133,13 @@ pre {
    */
   function redrawAll(json) {
 
+    // clear old data
     nodes.clear();
     edges.clear();
 
-    var parsed = JSON.parse(json);
-
     // add the parsed data to the DataSets.
-    nodes.add(parsed.nodes);
-    edges.add(parsed.edges);
+    nodes.add(json.nodes);
+    edges.add(json.edges);
 
     var data = nodes.get(2); // get the data from node 2 as example
     nodeContent.innerHTML = JSON.stringify(data,undefined,3); // show the data in the div
