@@ -1,28 +1,82 @@
 {
     "nodes": [
-        {"label":"Bernice","id":"1","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
-        {"label":"ccss","id":"2","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
-            {"label":"333","id":"3","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
-                    {"label":"444","id":"4","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
-                            {"label":"555","id":"5","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0}
+        {"label":"gateway","id":"1","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"bernice","id":"2","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"Vera","id":"3","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"Switch1","id":"4","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"Wifi","id":"5","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"Elsleepo","id":"6","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"ElRelaxo","id":"7","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"TV","id":"8","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0},
+        {"label":"Oscar","id":"9","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":5.0}
     ],
     "edges": [
         {
         "source":"1",
-        "target":"2",
-        "id":"4385", 
+        "target":"4",
+        "id":"4314", 
         "attributes":{"Weight":"1.0"},  
-            "color":"rgb(229,164,67)",
-            "size":1.0
+        "color":"rgb(229,164,67)",
+        "size":1.0
         },
-            {
-        "source":"2",
-        "target":"3",
-        "id":"4386",   
+        {
+        "source":"4",
+        "target":"2",
+        "id":"4313",   
         "attributes":{"Weight":"1.0"},
-            "color":"rgb(229,164,67)",
-            "size":1.0
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"4",
+        "target":"3",
+        "id":"4312",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"4",
+        "target":"5",
+        "id":"4311",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"4",
+        "target":"6",
+        "id":"4310",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"4",
+        "target":"7",
+        "id":"4389",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"5",
+        "target":"8",
+        "id":"4388",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
+        },
+        {
+        "source":"5",
+        "target":"9",
+        "id":"4387",   
+        "attributes":{"Weight":"1.0"},
+        "color":"rgb(229,164,67)",
+        "size":1.0
         }
+
+
 
     ]
 }
