@@ -2,7 +2,7 @@
 
 class Edge
 {
-	var id;
+	var $id;
 }
 
 ?>
