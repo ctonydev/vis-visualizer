@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF8">
-  <title>NetVis</title>
-  <script type="text/javascript" src="vis/vis.js"></script>
-  <link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
-   <script type="text/javascript">
+<meta http-equiv="content-type" content="text/html; charset=UTF8">
+<title>NetVis</title>
+<script type="text/javascript" src="vis/vis.js"></script>
+<link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
+<script type="text/javascript">
       function loadJSON(path, success, error) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
@@ -23,61 +23,62 @@
       }
    </script>
 
-  <style type="text/css">
-    #mynetwork {
-      width: 800px;
-      height: 800px;
-      border: 1px solid lightgray;
-    }
+<style type="text/css">
+#mynetwork {
+	width: 800px;
+	height: 800px;
+	border: 1px solid lightgray;
+}
 
-    div.nodeContent {
-      position: relative;
-      border: 1px solid lightgray;
-      width: 480px;
-      height: 780px;
-      margin-top: -802px;
-      margin-left: 810px;
-      padding: 10px;
-    }
+div.nodeContent {
+	position: relative;
+	border: 1px solid lightgray;
+	width: 480px;
+	height: 780px;
+	margin-top: -802px;
+	margin-left: 810px;
+	padding: 10px;
+}
 
-    pre {
-      padding: 5px;
-      margin: 5px;
-    }
+pre {
+	padding: 5px;
+	margin: 5px;
+}
 
-    .string {
-      color: green;
-    }
+.string {
+	color: green;
+}
 
-    .number {
-      color: darkorange;
-    }
+.number {
+	color: darkorange;
+}
 
-    .boolean {
-      color: blue;
-    }
+.boolean {
+	color: blue;
+}
 
-    .null {
-      color: magenta;
-    }
+.null {
+	color: magenta;
+}
 
-    .key {
-      color: red;
-    }
-  </style>
-  
+.key {
+	color: red;
+}
+</style>
+
 </head>
 
 <body>
 
-<h2>khubla.lan</h2>
+	<h2>khubla.lan</h2>
 
-<div id="mynetwork"></div>
-<div class="nodeContent"><h4>Node Content:</h4>
-  <pre id="nodeContent"></pre>
-</div>
+	<div id="mynetwork"></div>
+	<div class="nodeContent">
+		<h4>Node Content:</h4>
+		<pre id="nodeContent"></pre>
+	</div>
 
-<script type="text/javascript">
+	<script type="text/javascript">
   var network;
 
   var nodes = new vis.DataSet();
@@ -101,7 +102,7 @@
       }
     },
     edges: {
-      width: 0.15,
+      width: 0.5,
       smooth: {
         type: 'continuous'
       }
@@ -161,4 +162,3 @@
 
 </body>
 </html>
-
