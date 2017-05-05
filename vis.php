@@ -5,6 +5,7 @@
 <title>NetVis</title>
 <script type="text/javascript" src="vis/vis.js"></script>
 <link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
+<link type="text/css" rel="stylesheet" href="netvis.css">
 <script type="text/javascript">
       function loadJSON(path, success, error) {
         var xhr = new XMLHttpRequest();
@@ -22,49 +23,6 @@
         xhr.send();
       }
    </script>
-
-<style type="text/css">
-#mynetwork {
-	width: 800px;
-	height: 800px;
-	border: 1px solid lightgray;
-}
-
-div.nodeContent {
-	position: relative;
-	border: 1px solid lightgray;
-	width: 480px;
-	height: 780px;
-	margin-top: -802px;
-	margin-left: 810px;
-	padding: 10px;
-}
-
-pre {
-	padding: 5px;
-	margin: 5px;
-}
-
-.string {
-	color: green;
-}
-
-.number {
-	color: darkorange;
-}
-
-.boolean {
-	color: blue;
-}
-
-.null {
-	color: magenta;
-}
-
-.key {
-	color: red;
-}
-</style>
 
 </head>
 
