@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)http://kenedict.com/networks/worldcup14/vis/ , thanks Andre!-->
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF8">
-  <title>Dynamic Data - Importing from Gephi (JSON)</title>
-
+  <title>NetVis</title>
   <script type="text/javascript" src="vis/vis.js"></script>
   <link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
-
    <script type="text/javascript">
-function loadJSON(path, success, error) {
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        success(JSON.parse(xhr.responseText));
+      function loadJSON(path, success, error) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              success(JSON.parse(xhr.responseText));
+            }
+            else {
+              error(xhr);
+            }
+          }
+        };
+        xhr.open('GET', path, true);
+        xhr.send();
       }
-      else {
-        error(xhr);
-      }
-    }
-  };
-  xhr.open('GET', path, true);
-  xhr.send();
-}
    </script>
 
   <style type="text/css">
@@ -73,24 +70,7 @@ function loadJSON(path, success, error) {
 
 <body>
 
-<h2>Dynamic Data - Importing from Gephi (JSON)</h2>
-
-<div style="width:700px; font-size:14px; text-align: justify;">
-  This example shows how to import a JSON file exported by Gephi. The two
-  options available for the import are
-  available through the checkboxes. You can download the Gephi JSON exporter
-  here:
-  <a href="https://marketplace.gephi.org/plugin/json-exporter/" target="_blank">https://marketplace.gephi.org/plugin/json-exporter/</a>.
-  All of Gephi's attributes are also contained within the node elements. This
-  means you can access all of this data through the DataSet.
-  <br/>
-</div>
-
-<p>
-  <label><input type="checkbox" id="fixed" checked="checked"/> Fix in place after import.</label><br>
-  <label><input type="checkbox" id="parseColor"/> Parse the color instead of
-    copy (adds borders, highlights etc.)</label>
-</p>
+<h2>khubla.lan</h2>
 
 <div id="mynetwork"></div>
 <div class="nodeContent"><h4>Node Content:</h4>
@@ -103,11 +83,6 @@ function loadJSON(path, success, error) {
   var nodes = new vis.DataSet();
   var edges = new vis.DataSet();
   var gephiImported;
-  var fixedCheckbox = document.getElementById('fixed');
-  fixedCheckbox.onchange = redrawAll;
-
-  var parseColorCheckbox = document.getElementById('parseColor');
-  parseColorCheckbox.onchange = redrawAll;
 
   var nodeContent = document.getElementById('nodeContent');
 
@@ -167,12 +142,9 @@ function loadJSON(path, success, error) {
     nodes.clear();
     edges.clear();
 
-    var fixed = fixedCheckbox.checked;
-    var parseColor = parseColorCheckbox.checked;
-
     var parsed = vis.network.gephiParser.parseGephi(gephiJSON, {
-      fixed: fixed,
-      parseColor: parseColor
+      fixed: false,
+      parseColor: false
     });
 
     // add the parsed data to the DataSets.
