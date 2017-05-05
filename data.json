@@ -1,0 +1,22 @@
+{
+    "nodes": [
+        {
+            "id": 0,
+            "label": "Bernice"
+        },
+       {
+            "id": 1,
+            "label": "ciscowap"
+        }
+    ],
+    "edges": [
+        {
+            "id": "0",
+            "type": "network",
+            "from": 0,
+            "to": 1,
+            "properties": []
+        }
+    ]
+}
+
