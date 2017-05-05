@@ -83,7 +83,6 @@ pre {
 
   var nodes = new vis.DataSet();
   var edges = new vis.DataSet();
-  var gephiImported;
 
   var nodeContent = document.getElementById('nodeContent');
 
@@ -132,21 +131,12 @@ pre {
   /**
    * This function fills the DataSets. These DataSets will update the network.
    */
-  function redrawAll(gephiJSON) {
-    if (gephiJSON.nodes === undefined) {
-      gephiJSON = gephiImported;
-    }
-    else {
-      gephiImported = gephiJSON;
-    }
+  function redrawAll(JSON) {
 
     nodes.clear();
     edges.clear();
 
-    var parsed = vis.network.gephiParser.parseGephi(gephiJSON, {
-      fixed: false,
-      parseColor: true
-    });
+    var parsed = JSON.parse(JSON);
 
     // add the parsed data to the DataSets.
     nodes.add(parsed.nodes);
