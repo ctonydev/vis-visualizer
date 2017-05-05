@@ -94,34 +94,8 @@ pre {
     nodes: nodes,
     edges: edges
   };
-  var options = {
-    nodes: {
-      shape: 'circle',
-      font: {
-        face: 'Tahoma'
-      }
-    },
-    edges: {
-      width: 0.5,
-      smooth: {
-        type: 'continuous'
-      }
-    },
-    interaction: {
-      tooltipDelay: 200,
-      hideEdgesOnDrag: true
-    },
-    physics: {
-      stabilization: false,
-      barnesHut: {
-        gravitationalConstant: -10000,
-        springConstant: 0.002,
-        springLength: 100
-      }
-    }
-  };
 
-  network = new vis.Network(container, data, options);
+  network = new vis.Network(container, data, opts);
   network.on('click', function (params) {
     if (params.nodes.length > 0) {
       var data = nodes.get(params.nodes[0]); // get the data from selected node

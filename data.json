@@ -310,7 +310,7 @@
    "opts":[  
       {  
          "nodes":{  
-            "shape":"circle",
+            "shape":"square",
             "font":{  
                "face":"Tahoma"
             }
