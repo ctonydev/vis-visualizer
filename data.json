@@ -307,7 +307,7 @@
          "size":1.0
       }
    ],
-   "options":[  
+   "opts":[  
       {  
          "nodes":{  
             "shape":"circle",
