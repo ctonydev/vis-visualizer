@@ -138,7 +138,6 @@ pre {
     edges.add(json.edges);
 
     var data = nodes.get(2); // get the data from node 2 as example
-    nodeContent.innerHTML = JSON.stringify(data,undefined,3); // show the data in the div
     network.fit(); // zoom to fit
   }
 
