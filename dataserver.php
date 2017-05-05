@@ -12,6 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
+// grab all hosts
 $sql = "SELECT * FROM host";
 $result = $conn->query($sql);
 
