@@ -73,10 +73,6 @@ pre {
 	<h2>khubla.lan</h2>
 
 	<div id="mynetwork"></div>
-	<div class="nodeContent">
-		<h4>Node Content:</h4>
-		<pre id="nodeContent"></pre>
-	</div>
 
 	<script type="text/javascript">
   var network;
@@ -123,10 +119,6 @@ pre {
 
   network = new vis.Network(container, data, options);
   network.on('click', function (params) {
-    if (params.nodes.length > 0) {
-      var data = nodes.get(params.nodes[0]); // get the data from selected node
-      nodeContent.innerHTML = JSON.stringify(data, undefined, 3); // show the data in the div
-    }
   })
 
   /**
