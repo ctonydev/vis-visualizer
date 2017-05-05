@@ -96,7 +96,7 @@ pre {
   };
   var options = {
     nodes: {
-      shape: 'dot',
+      shape: 'circle',
       font: {
         face: 'Tahoma'
       }
@@ -116,7 +116,7 @@ pre {
       barnesHut: {
         gravitationalConstant: -10000,
         springConstant: 0.002,
-        springLength: 150
+        springLength: 100
       }
     }
   };
@@ -145,7 +145,7 @@ pre {
 
     var parsed = vis.network.gephiParser.parseGephi(gephiJSON, {
       fixed: false,
-      parseColor: false
+      parseColor: true
     });
 
     // add the parsed data to the DataSets.
