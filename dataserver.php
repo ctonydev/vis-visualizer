@@ -35,24 +35,24 @@ $sql = "SELECT * FROM host";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-
-	$node = new Node;
-	// build the node
-	$node->label = $row["hostname"];
-	$node->id = $row["id"];
-	$node->title = $row["ip"];
-	$node->color = "rgb(229,164,67)";
-	$node->size = 5.0;
-	
-	$attributes = new Attributes;
-	$attributes->Weight=1.0;
-	$node->attributes = $attributes;
-
-	// add the node
-	array_push($nodes, $node);
-
     // output data of each row
     while($row = $result->fetch_assoc()) {
+
+		$node = new Node;
+		// build the node
+		$node->label = $row["hostname"];
+		$node->id = $row["id"];
+		$node->title = $row["ip"];
+		$node->color = "rgb(229,164,67)";
+		$node->size = 5.0;
+		
+		$attributes = new Attributes;
+		$attributes->Weight=1.0;
+		$node->attributes = $attributes;
+
+		// add the node
+		array_push($nodes, $node);
+
         echo "id: " . $row["id"]. " - hostname: " . $row["hostname"]."<br>";
     }
 } else {
