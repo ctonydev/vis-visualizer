@@ -1,33 +1,7 @@
 <?php   
 
-// GRANT ALL PRIVILEGES ON netvis.* TO 'netvis'@'localhost' identified by 'netvis';
-
-$servername = "localhost";
-$username = "netvis";
-$password = "netvis";
-$dbname = "netvis";
-
-class graphvis 
-{
-	var $nodes = array();
-	var $edges = array();
-
-}
-
-class Node
-{
-	var $label;
-	var $id;
-	var $title;
-	var $color;
-	var $size;
-	var $attributes;
-}
-
-class Attributes
-{
-	var $Weight;
-}
+include("config.php");
+include("domain/domain.php");
 
 $data = new graphvis;
 
@@ -59,8 +33,6 @@ if ($result->num_rows > 0) {
 
 		// add the node
 		array_push($data->nodes, $node);
-
-        echo "id: " . $row["id"]. " - hostname: " . $row["hostname"]."<br>";
     }
 } else {
     echo "0 results";
