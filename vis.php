@@ -5,8 +5,8 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF8">
   <title>Dynamic Data - Importing from Gephi (JSON)</title>
 
-  <script type="text/javascript" src="vis.js"></script>
-  <link type="text/css" rel="stylesheet" href="vis-network.min.css">
+  <script type="text/javascript" src="vis/vis.js"></script>
+  <link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
 
    <script type="text/javascript">
 function loadJSON(path, success, error) {
