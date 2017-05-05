@@ -83,7 +83,7 @@ pre {
 
   var nodes = new vis.DataSet();
   var edges = new vis.DataSet();
-  var opts = new vis.DataSet();
+  var opts;
 
   var nodeContent = document.getElementById('nodeContent');
 
@@ -94,8 +94,8 @@ pre {
     nodes: nodes,
     edges: edges
   };
-
-  network = new vis.Network(container, data, opts);
+  
+  network = new vis.Network(container, data, options);
   network.on('click', function (params) {
     if (params.nodes.length > 0) {
       var data = nodes.get(params.nodes[0]); // get the data from selected node
