@@ -83,6 +83,7 @@ pre {
 
   var nodes = new vis.DataSet();
   var edges = new vis.DataSet();
+  var options = new vis.DataSet();
 
   var nodeContent = document.getElementById('nodeContent');
 
@@ -133,13 +134,17 @@ pre {
    */
   function redrawAll(json) {
 
+    console.log(json);
+
     // clear old data
     nodes.clear();
     edges.clear();
+    options.clear();
 
     // add the parsed data to the DataSets.
     nodes.add(json.nodes);
     edges.add(json.edges);
+    options.add(json.options);
 
     var data = nodes.get(2); // get the data from node 2 as example
     nodeContent.innerHTML = JSON.stringify(data,undefined,3); // show the data in the div
