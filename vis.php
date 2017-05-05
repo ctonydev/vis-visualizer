@@ -28,8 +28,6 @@
 
 <body>
 
-    <h2>khubla.lan</h2>
-
     <div id="mynetwork"></div>
 
     <script type="text/javascript">
