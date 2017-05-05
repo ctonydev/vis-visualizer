@@ -306,31 +306,5 @@
          "color":"rgb(229,10,67)",
          "size":1.0
       }
-   ],
-   "opts":{  
-      "nodes":{  
-         "shape":"square",
-         "font":{  
-            "face":"Tahoma"
-         }
-      },
-      "edges":{  
-         "width":0.5,
-         "smooth":{  
-            "type":"continuous"
-         }
-      },
-      "interaction":{  
-         "tooltipDelay":200,
-         "hideEdgesOnDrag":true
-      },
-      "physics":{  
-         "stabilization":false,
-         "barnesHut":{  
-            "gravitationalConstant":-10000,
-            "springConstant":0.002,
-            "springLength":100
-         }
-      }
-   }
+   ]
 }

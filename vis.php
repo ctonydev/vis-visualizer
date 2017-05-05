@@ -83,7 +83,6 @@ pre {
 
   var nodes = new vis.DataSet();
   var edges = new vis.DataSet();
-  var opts;
 
   var nodeContent = document.getElementById('nodeContent');
 
@@ -94,7 +93,34 @@ pre {
     nodes: nodes,
     edges: edges
   };
-  
+
+  var options = {
+    nodes: {
+      shape: 'circle',
+      font: {
+        face: 'Tahoma'
+      }
+    },
+    edges: {
+      width: 0.5,
+      smooth: {
+        type: 'continuous'
+      }
+    },
+    interaction: {
+      tooltipDelay: 200,
+      hideEdgesOnDrag: true
+    },
+    physics: {
+      stabilization: false,
+      barnesHut: {
+        gravitationalConstant: -10000,
+        springConstant: 0.002,
+        springLength: 100
+      }
+    }
+  };
+
   network = new vis.Network(container, data, options);
   network.on('click', function (params) {
     if (params.nodes.length > 0) {
@@ -113,12 +139,11 @@ pre {
     // clear old data
     nodes.clear();
     edges.clear();
-    opts.clear();
+
 
     // add the parsed data to the DataSets.
     nodes.add(json.nodes);
     edges.add(json.edges);
-    opts.add(json.opts);
 
     var data = nodes.get(2); // get the data from node 2 as example
     nodeContent.innerHTML = JSON.stringify(data,undefined,3); // show the data in the div
