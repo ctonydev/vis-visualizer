@@ -131,12 +131,12 @@ pre {
   /**
    * This function fills the DataSets. These DataSets will update the network.
    */
-  function redrawAll(JSON) {
+  function redrawAll(json) {
 
     nodes.clear();
     edges.clear();
 
-    var parsed = JSON.parse(JSON);
+    var parsed = JSON.parse(json);
 
     // add the parsed data to the DataSets.
     nodes.add(parsed.nodes);
