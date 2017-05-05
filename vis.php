@@ -111,7 +111,7 @@ function loadJSON(path, success, error) {
 
   var nodeContent = document.getElementById('nodeContent');
 
-  loadJSON('WorldCup2014.json', redrawAll, function(err) {console.log('error')});
+  loadJSON('data.json', redrawAll, function(err) {console.log('error')});
 
   var container = document.getElementById('mynetwork');
   var data = {
