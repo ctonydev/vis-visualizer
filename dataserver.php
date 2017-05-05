@@ -1,8 +1,8 @@
 <?php   
 
 $servername = "localhost";
-$username = "root";
-$password = "password";
+$username = "netvis";
+$password = "netvis";
 $dbname = "netvis";
 
 // Create connection
