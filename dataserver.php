@@ -7,6 +7,13 @@ $username = "netvis";
 $password = "netvis";
 $dbname = "netvis";
 
+class graphvis 
+{
+	var $nodes = array();
+	var $edges = array();
+
+}
+
 class Node
 {
 	var $label;
@@ -22,7 +29,7 @@ class Attributes
 	var $Weight;
 }
 
-$nodes = array();
+$data = new graphvis;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,7 +58,7 @@ if ($result->num_rows > 0) {
 		$node->attributes = $attributes;
 
 		// add the node
-		array_push($nodes, $node);
+		array_push($data->nodes, $node);
 
         echo "id: " . $row["id"]. " - hostname: " . $row["hostname"]."<br>";
     }
@@ -60,8 +67,8 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 
-$nodes_json = json_encode($nodes);
+$json = json_encode($data);
 
-echo $nodes_json;
+echo $json;
 
 ?>
