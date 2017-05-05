@@ -1,22 +1,29 @@
 {
     "nodes": [
-        {
-            "id": 0,
-            "label": "Bernice"
-        },
-       {
-            "id": 1,
-            "label": "ciscowap"
-        }
+        {"label":"Bernice","id":"1","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
+        {"label":"ccss","id":"2","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
+            {"label":"333","id":"3","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
+                    {"label":"444","id":"4","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0},
+                            {"label":"555","id":"5","attributes":{"Weight":"1.0"},"color":"rgb(229,164,67)","size":1.0}
     ],
     "edges": [
         {
-            "id": "0",
-            "type": "network",
-            "from": 0,
-            "to": 1,
-            "properties": []
+        "source":"1",
+        "target":"2",
+        "id":"4385", 
+        "attributes":{"Weight":"1.0"},  
+            "color":"rgb(229,164,67)",
+            "size":1.0
+        },
+            {
+        "source":"2",
+        "target":"3",
+        "id":"4386",   
+        "attributes":{"Weight":"1.0"},
+            "color":"rgb(229,164,67)",
+            "size":1.0
         }
+
     ]
 }
 
