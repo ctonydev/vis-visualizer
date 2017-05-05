@@ -4,10 +4,27 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF8">
   <title>Dynamic Data - Importing from Gephi (JSON)</title>
-  <script type="text/javascript" src="exampleUtil.js"></script>
 
   <script type="text/javascript" src="vis.js"></script>
   <link type="text/css" rel="stylesheet" href="vis-network.min.css">
+
+   <script type="text/javascript">
+function loadJSON(path, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        success(JSON.parse(xhr.responseText));
+      }
+      else {
+        error(xhr);
+      }
+    }
+  };
+  xhr.open('GET', path, true);
+  xhr.send();
+}
+   </script>
 
   <style type="text/css">
     #mynetwork {
