@@ -3,6 +3,7 @@
       {  
          "label":"gateway-ascot",
          "id":"1",
+         "title": "192.168.75.1",
          "attributes":{  
             "Weight":"1.0"
          },
