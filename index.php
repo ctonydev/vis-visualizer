@@ -5,31 +5,13 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <title>NetVis</title>
     <script type="text/javascript" src="vis/vis.js"></script>
+    <script type="text/javascript" src="js/loadjson.js"></script>
     <link type="text/css" rel="stylesheet" href="vis/vis-network.min.css">
-    <link type="text/css" rel="stylesheet" href="netvis.css">
-    <script type="text/javascript">
-        function loadJSON(path, success, error) {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        success(JSON.parse(xhr.responseText));
-                    } else {
-                        error(xhr);
-                    }
-                }
-            };
-            xhr.open('GET', path, true);
-            xhr.send();
-        }
-    </script>
-
+    <link type="text/css" rel="stylesheet" href="css/netvis.css">
 </head>
 
 <body>
-
     <div id="mynetwork"></div>
-
     <script type="text/javascript">
         var network;
 
