@@ -33,6 +33,8 @@ function getAllIPs() {
 	    echo "0 results";
 	}
 	$conn->close();
+
+	return $ips;
 }
 
 $ips = getAllIPs();
