@@ -33,6 +33,9 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 
-var_dump($ips);
+foreach($ips as $ip) {
+	echo $ip;
+}
+
 ?>
 
