@@ -15,8 +15,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 
-    	$network = $rows["network"];
-    	$mask = $rows["mask"];
+    	$network = $row["network"];
+    	$mask = $row["mask"];
 
     	echo $network;
 
