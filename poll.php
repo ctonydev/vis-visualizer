@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     	$network = $row["network"];
     	$mask = $row["mask"];
 
-    	echo $network;
+    	echo $network."/".$mask."\r\n";
 
     }
 } else {
