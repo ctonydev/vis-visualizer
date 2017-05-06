@@ -2,7 +2,6 @@
 
 function iplist($range)
 {
-	$addresses = array();
 	@list($ip, $len) = explode('/', $range);
 
 	if (($min = ip2long($ip)) !== false) {
