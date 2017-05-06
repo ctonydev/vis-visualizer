@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 } 
 
 // grab all networks
-$sql = "SELECT * FROM network";
+$sql = "SELECT * FROM networks";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
