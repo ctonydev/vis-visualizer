@@ -1,3 +1,4 @@
+<?php
 
 function iplist($range)
 {
@@ -11,3 +12,5 @@ function iplist($range)
 	}
 	return $addresses;
 }
+
+?>
