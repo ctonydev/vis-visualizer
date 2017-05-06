@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     	echo $net."\r\n";
 
     	$list = iplist($net);
-    	array_push($ips, $list);
+    	array_merge($ips, $list);
     }
 } else {
     echo "0 results";
