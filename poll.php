@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+include("ip.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -18,8 +19,11 @@ if ($result->num_rows > 0) {
     	$network = $row["network"];
     	$mask = $row["mask"];
 
-    	echo $network."/".$mask."\r\n";
+    	$net = $network."/".$mask;
+    	echo $net."\r\n";
 
+    	$list = iplist($net);
+		var_dump($list);
     }
 } else {
     echo "0 results";
