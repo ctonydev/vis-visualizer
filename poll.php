@@ -6,7 +6,10 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
+
+// entire list
+$ips = array();
 
 // grab all networks
 $sql = "SELECT * FROM networks";
@@ -23,12 +26,13 @@ if ($result->num_rows > 0) {
     	echo $net."\r\n";
 
     	$list = iplist($net);
-		var_dump($list);
+    	array_push($ips, $list);
     }
 } else {
     echo "0 results";
 }
 $conn->close();
 
+var_dump($ips);
 ?>
 
