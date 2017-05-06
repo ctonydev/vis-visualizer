@@ -1,4 +1,4 @@
-
+<?php
 include("config.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -25,3 +25,6 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
+
+?>
+
