@@ -66,7 +66,7 @@ function getNetworkIps() {
 function saveIp($ip){
 	$conn = getDBConnection();
 
-	$sql = "REPLACE into ip values('".$ip->ip."',now(),'".$ip->ping."','".$ip->laststatus."')";
+	$sql = "REPLACE into ip values('".$ip->ip."',now(),'".$ip->ping."','".$ip->laststatus."','".$ip->hostname."')";
 //	echo $sql."\n";
 	if ($conn->query($sql) != TRUE) {
 	    echo "Error: " . $sql . "<br>" . $conn->error;

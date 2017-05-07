@@ -2,6 +2,7 @@
     include_once("config.php");
     include_once("lib/db.php");
     include_once("lib/ping.php");
+    include_once("lib/arp.php");
     include_once("domain/domain.php");
 
     $ips = getNetworkIps();
@@ -14,8 +15,12 @@
 	        $ipObj->ip=$ip;
 	        $ipObj->ping=$time;
 	        $ipObj->laststatus=1;
+            $ipObj->hostname = gethostbyaddr($ip);
 
 	        saveIp($ipObj);
+
+//            $mac = getMAC($ip);
+ //           echo $mac;
 	    }
     }
 ?>

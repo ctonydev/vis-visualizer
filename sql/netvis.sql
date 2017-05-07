@@ -43,6 +43,7 @@ CREATE TABLE `ip` (
   `lastseen` datetime NOT NULL,
   `ping` float NOT NULL,
   `laststatus` int(11) NOT NULL,
+  `hostname` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -86,4 +87,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-07 22:11:06
+-- Dump completed on 2017-05-07 22:39:54
