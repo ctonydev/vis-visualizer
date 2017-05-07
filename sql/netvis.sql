@@ -32,6 +32,36 @@ CREATE TABLE `host` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `ip`
+--
+
+DROP TABLE IF EXISTS `ip`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ip` (
+  `ip` varchar(15) NOT NULL,
+  `lastseen` datetime NOT NULL,
+  `ping` int(11) NOT NULL,
+  PRIMARY KEY (`ip`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `mac`
+--
+
+DROP TABLE IF EXISTS `mac`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mac` (
+  `mac` varchar(17) NOT NULL,
+  `lastseen` datetime DEFAULT NULL,
+  `lastip` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`mac`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `networks`
 --
 
@@ -55,4 +85,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-05 22:55:13
+-- Dump completed on 2017-05-07 19:02:14
