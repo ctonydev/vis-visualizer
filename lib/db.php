@@ -1,8 +1,8 @@
 <?php
 
-include("config.php");
-include("ip.php");
-include("domain/domain.php");
+include_once("config.php");
+include_once("ip.php");
+include_once("domain/domain.php");
 
 function getDBConnection() {
 	global $servername;
@@ -16,6 +16,10 @@ function getDBConnection() {
 	    die("Connection failed: " . $conn->connect_error);
 	}
 	return $conn;	
+} 
+
+function closeDBConnection($conn) {
+	$conn->close();
 }
 
 function getNetworks() {
@@ -39,7 +43,8 @@ function getNetworks() {
 	} else {
 	    echo "0 results";
 	}
-	$conn->close();
+	
+	closeDBConnection($conn);
 
 	return $networks;
 }
@@ -53,9 +58,21 @@ function getNetworkIps() {
     	$list = iplist($net);
     	$ips = array_merge($ips, $list);
 
-        echo $network->network;
+       // echo $network->network;
     }
     return $ips;
 }
+
+function saveIp($ip){
+	$conn = getDBConnection();
+
+	$sql = "REPLACE into ip values('".$ip->ip."',now(),'".$ip->ping."','".$ip->laststatus."')";
+//	echo $sql."\n";
+	if ($conn->query($sql) != TRUE) {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}	
+	$result = $conn->query($sql);
+	closeDBConnection($conn);
+} 
 
 ?>

@@ -1,7 +1,7 @@
 <?php   
 
-include("config.php");
-include("domain/domain.php");
+include_once("config.php");
+include_once("domain/domain.php");
 
 $data = new graphvis;
 

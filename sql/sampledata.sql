@@ -51,7 +51,8 @@ DROP TABLE IF EXISTS `ip`;
 CREATE TABLE `ip` (
   `ip` varchar(15) NOT NULL,
   `lastseen` datetime NOT NULL,
-  `ping` int(11) NOT NULL,
+  `ping` float NOT NULL,
+  `laststatus` int(11) NOT NULL,
   PRIMARY KEY (`ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -62,6 +63,7 @@ CREATE TABLE `ip` (
 
 LOCK TABLES `ip` WRITE;
 /*!40000 ALTER TABLE `ip` DISABLE KEYS */;
+INSERT INTO `ip` VALUES ('192.168.75.1','2017-05-07 22:09:40',0.000236988,1),('192.168.75.5','2017-05-07 22:09:43',0.000118971,1);
 /*!40000 ALTER TABLE `ip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-07 19:02:55
+-- Dump completed on 2017-05-07 22:11:10
