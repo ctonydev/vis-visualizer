@@ -17,6 +17,9 @@
 	        		$host->sysdesc = trim($sysdesc);
 	        	}
 	        	saveHost($host);
+
+	        	eraseInterfaces($host);
+	        	$interfaces = getInterfaces($ip, $host);
 	        }
 	    }
     }

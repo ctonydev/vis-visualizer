@@ -7,7 +7,6 @@ function saveHost($host){
 	if ($conn->query($sql) != TRUE) {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}	
-	$result = $conn->query($sql);
 	closeDBConnection($conn);
 } 
 
