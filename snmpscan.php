@@ -23,8 +23,12 @@
 	        //	var_dump($interfaces);
 
 	        	for ($i=0; $i<count($interfaces);$i++){
-	        		saveInterface($interface[$i]);
-
+	        		$iface =$interfaces[$i];
+	        		if (null != $iface->ip){
+	        			if ("127.0.0.1" !=$iface->ip){
+	        				saveInterface($iface);
+	        			}
+	        		}
 	        	}
 	        }
 	    }

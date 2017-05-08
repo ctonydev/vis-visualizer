@@ -36,7 +36,7 @@ CREATE TABLE `host` (
 
 LOCK TABLES `host` WRITE;
 /*!40000 ALTER TABLE `host` DISABLE KEYS */;
-INSERT INTO `host` VALUES ('','','2017-05-08 00:54:15'),('STRING:','STRING: GS108Tv2','2017-05-08 00:52:01'),('STRING: bernice.ascot.khubla.lan','STRING: FreeBSD bernice.ascot.khubla.lan 11.0-RELEASE-p9 FreeBSD 11.0-RELEASE-p9 #0: Tue Apr 11 08:48:40 UTC 2017     root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC amd64','2017-05-08 00:52:13'),('STRING: gateway.ascot.khubla.lan','STRING: pfSense gateway.ascot.khubla.lan 2.3.3-RELEASE nanobsd FreeBSD 10.3-RELEASE-p16 i386','2017-05-08 01:17:12'),('STRING: gateway.spring.khubla.lan','STRING: pfSense gateway.spring.khubla.lan 2.4.0-BETA pfSense FreeBSD 11.0-RELEASE-p8 arm','2017-05-08 00:52:25');
+INSERT INTO `host` VALUES ('bernice.ascot.khubla.lan','FreeBSD bernice.ascot.khubla.lan 11.0-RELEASE-p9 FreeBSD 11.0-RELEASE-p9 #0: Tue Apr 11 08:48:40 UTC 2017     root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC amd64','2017-05-08 03:08:45'),('gateway.ascot.khubla.lan','pfSense gateway.ascot.khubla.lan 2.3.3-RELEASE nanobsd FreeBSD 10.3-RELEASE-p16 i386','2017-05-08 03:06:21'),('gateway.spring.khubla.lan','pfSense gateway.spring.khubla.lan 2.4.0-BETA pfSense FreeBSD 11.0-RELEASE-p8 arm','2017-05-08 03:08:51');
 /*!40000 ALTER TABLE `host` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,8 +54,10 @@ CREATE TABLE `interface` (
   `ip` varchar(45) NOT NULL,
   `mask` varchar(45) NOT NULL,
   `index` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `host_idx` (`host`),
+  CONSTRAINT `host_fk` FOREIGN KEY (`host`) REFERENCES `host` (`sysname`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,6 +66,7 @@ CREATE TABLE `interface` (
 
 LOCK TABLES `interface` WRITE;
 /*!40000 ALTER TABLE `interface` DISABLE KEYS */;
+INSERT INTO `interface` VALUES (9,'gateway.ascot.khubla.lan','vr1','192.168.75.1','255.255.255.0',NULL),(10,'gateway.ascot.khubla.lan','vr2','162.157.164.209','255.255.248.0',NULL),(11,'gateway.ascot.khubla.lan','ovpns1','192.168.72.1','255.255.255.255',NULL),(22,'bernice.ascot.khubla.lan','igb0','192.168.75.75','255.255.255.255',NULL),(23,'bernice.ascot.khubla.lan','lo1','172.16.75.75','255.255.255.255',NULL),(24,'gateway.spring.khubla.lan','cpsw0','68.146.222.103','255.255.252.0',NULL),(25,'gateway.spring.khubla.lan','cpsw1','192.168.77.1','255.255.255.0',NULL),(26,'gateway.spring.khubla.lan','ovpnc1','192.168.72.2','255.255.255.255',NULL);
 /*!40000 ALTER TABLE `interface` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +93,7 @@ CREATE TABLE `ip` (
 
 LOCK TABLES `ip` WRITE;
 /*!40000 ALTER TABLE `ip` DISABLE KEYS */;
-INSERT INTO `ip` VALUES ('192.168.75.1','2017-05-08 00:48:51',0.00028801,1,'gateway.ascot.khubla.lan'),('192.168.75.130','2017-05-07 22:42:30',0.00417995,1,'elsleepo.ascot.khubla.lan'),('192.168.75.136','2017-05-07 22:42:35',0.113057,1,'panther.ascot.khubla.lan'),('192.168.75.139','2017-05-07 22:42:37',0.00554585,1,'elrelaxo.ascot.khubla.lan'),('192.168.75.142','2017-05-07 22:42:39',0.284226,1,'Soundtouch237.ascot.khubla.lan'),('192.168.75.144','2017-05-07 22:42:41',0.000445127,1,'192.168.75.144'),('192.168.75.145','2017-05-07 22:42:41',0.0157349,1,'oscar-3.ascot.khubla.lan'),('192.168.75.148','2017-05-07 22:42:43',0.00130796,1,'localhost.ascot.khubla.lan'),('192.168.75.149','2017-05-07 22:42:43',0.00692701,1,'192.168.75.149'),('192.168.75.153','2017-05-07 22:42:46',0.00502896,1,'192.168.75.153'),('192.168.75.5','2017-05-08 00:29:45',0.0000741482,1,'bernice.ascot.khubla.lan'),('192.168.75.71','2017-05-07 22:41:36',0.00012207,1,'sandbox.ascot.khubla.lan'),('192.168.75.72','2017-05-07 22:41:36',0.0000760555,1,'git.ascot.khubla.lan'),('192.168.75.73','2017-05-07 22:41:36',0.0000510216,1,'192.168.75.73'),('192.168.75.74','2017-05-07 22:41:36',0.0000500679,1,'minecraft.ascot.khubla.lan'),('192.168.75.75','2017-05-07 22:41:36',0.0000629425,1,'192.168.75.75'),('192.168.75.96','2017-05-07 22:41:56',0.00448179,1,'wifi4.ascot.khubla.lan'),('192.168.77.1','2017-05-07 22:44:29',0.0173268,1,'gateway.spring.khubla.lan'),('192.168.77.143','2017-05-07 22:46:51',0.104271,1,'192.168.77.143'),('192.168.77.148','2017-05-07 22:46:55',0.014889,1,'192.168.77.148'),('192.168.77.149','2017-05-07 22:46:55',0.0173261,1,'192.168.77.149'),('192.168.77.150','2017-05-07 22:46:55',0.0156021,1,'192.168.77.150'),('192.168.77.168','2017-05-07 22:47:13',0.087965,1,'192.168.77.168'),('192.168.77.174','2017-05-07 22:47:18',0.020268,1,'192.168.77.174'),('192.168.77.179','2017-05-07 22:47:22',0.076407,1,'192.168.77.179'),('192.168.77.188','2017-05-07 22:47:30',0.0191929,1,'192.168.77.188'),('192.168.77.98','2017-05-07 22:46:06',0.013397,1,'wifi2.spring.khubla.lan');
+INSERT INTO `ip` VALUES ('192.168.75.1','2017-05-08 02:13:12',0.000309944,1,'gateway.ascot.khubla.lan'),('192.168.75.130','2017-05-08 02:15:14',0.00420904,1,'elsleepo.ascot.khubla.lan'),('192.168.75.139','2017-05-08 02:15:22',0.00588799,1,'elrelaxo.ascot.khubla.lan'),('192.168.75.142','2017-05-08 02:15:24',0.0325301,1,'Soundtouch237.ascot.khubla.lan'),('192.168.75.144','2017-05-08 02:15:26',0.000530005,1,'192.168.75.144'),('192.168.75.145','2017-05-08 02:15:26',0.00124717,1,'oscar-3.ascot.khubla.lan'),('192.168.75.149','2017-05-08 02:15:29',0.00723481,1,'192.168.75.149'),('192.168.75.153','2017-05-08 02:15:32',0.00506091,1,'192.168.75.153'),('192.168.75.5','2017-05-08 02:13:15',0.00014782,1,'bernice.ascot.khubla.lan'),('192.168.75.71','2017-05-08 02:14:21',0.0000889301,1,'sandbox.ascot.khubla.lan'),('192.168.75.72','2017-05-08 02:14:21',0.0000889301,1,'git.ascot.khubla.lan'),('192.168.75.73','2017-05-08 02:14:21',0.0000522137,1,'192.168.75.73'),('192.168.75.74','2017-05-08 02:14:21',0.0000669956,1,'minecraft.ascot.khubla.lan'),('192.168.75.75','2017-05-08 02:14:21',0.0000698566,1,'192.168.75.75'),('192.168.75.96','2017-05-08 02:14:41',0.00892782,1,'wifi4.ascot.khubla.lan'),('192.168.77.1','2017-05-08 02:17:15',0.0142632,1,'gateway.spring.khubla.lan'),('192.168.77.98','2017-05-08 02:18:52',0.0401561,1,'wifi2.spring.khubla.lan');
 /*!40000 ALTER TABLE `ip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  1:17:33
+-- Dump completed on 2017-05-08  3:12:24
