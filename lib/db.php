@@ -5,12 +5,12 @@ include_once("ip.php");
 include_once("domain/domain.php");
 
 function getDBConnection() {
-	global $servername;
-	global $username;
-	global $password;
-	global $dbname;
+	global $db_servername;
+	global $db_username;
+	global $db_password;
+	global $db_dbname;
 
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);

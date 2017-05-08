@@ -1,10 +1,10 @@
 <?php
 
-include("edge.php");
-include("node.php");
-include("attributes.php");
-include("graphvis.php");
-include("network.php");
-include("ip.php");
+include("graphis/edge.php");
+include("graphis/node.php");
+include("graphis/attributes.php");
+include("graphis/graphvis.php");
+include("network/network.php");
+include("network/ip.php");
 ?>
 
