@@ -24,8 +24,26 @@ DROP TABLE IF EXISTS `host`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `host` (
   `sysname` varchar(256) NOT NULL DEFAULT '',
-  `sysdesc` varchar(256) DEFAULT NULL,
+  `sysdesc` varchar(256) NOT NULL,
+  `lastseen` datetime NOT NULL,
   PRIMARY KEY (`sysname`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `interface`
+--
+
+DROP TABLE IF EXISTS `interface`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interface` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `host` varchar(256) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `mask` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -85,4 +103,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  0:32:17
+-- Dump completed on 2017-05-08  0:47:55

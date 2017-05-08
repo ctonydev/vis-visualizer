@@ -24,7 +24,8 @@ DROP TABLE IF EXISTS `host`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `host` (
   `sysname` varchar(256) NOT NULL DEFAULT '',
-  `sysdesc` varchar(256) DEFAULT NULL,
+  `sysdesc` varchar(256) NOT NULL,
+  `lastseen` datetime NOT NULL,
   PRIMARY KEY (`sysname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,7 +36,34 @@ CREATE TABLE `host` (
 
 LOCK TABLES `host` WRITE;
 /*!40000 ALTER TABLE `host` DISABLE KEYS */;
+INSERT INTO `host` VALUES ('','','2017-05-08 00:39:21'),('STRING: gateway.ascot.khubla.lan','STRING: pfSense gateway.ascot.khubla.lan 2.3.3-RELEASE nanobsd FreeBSD 10.3-RELEASE-p16 i386','2017-05-08 00:47:17');
 /*!40000 ALTER TABLE `host` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `interface`
+--
+
+DROP TABLE IF EXISTS `interface`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `interface` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `host` varchar(256) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `mask` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `interface`
+--
+
+LOCK TABLES `interface` WRITE;
+/*!40000 ALTER TABLE `interface` DISABLE KEYS */;
+/*!40000 ALTER TABLE `interface` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -123,4 +151,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  0:32:20
+-- Dump completed on 2017-05-08  0:47:58
