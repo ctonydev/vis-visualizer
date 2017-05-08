@@ -5,6 +5,7 @@ include_once("domain/domain.php");
 include_once("lib/db/ipdb.php");
 include_once("lib/db/networkdb.php");
 include_once("lib/db/hostdb.php");
+include_once("lib/db/interfacedb.php");
 
 function getDBConnection() {
 	global $db_servername;
