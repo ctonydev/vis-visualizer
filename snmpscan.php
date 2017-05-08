@@ -7,8 +7,17 @@
     $ips = getIps();
 
     foreach($ips as $ip) { {
-        	echo "ip: ".$ip->ip." ";	
-        	echo getSNMPSysName($ip->ip)." ".getSNMPSysDesc($ip->ip)."\n";
+        	echo "ip: ".$ip->ip."\n";
+        	$sysname = getSNMPSysName($ip->ip);
+        	if (false!=$sysname){
+	        	$host = new Host;
+	        	$host->sysname = trim($sysname);
+	        	$sysdesc = getSNMPSysDesc($ip->ip);
+	        	if (false !=$sysdesc){
+	        		$host->sysdesc = trim($sysdesc);
+	        	}
+	        	saveHost($host);
+	        }
 	    }
     }
 ?>
