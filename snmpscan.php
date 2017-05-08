@@ -7,8 +7,8 @@
     $ips = getIps();
 
     foreach($ips as $ip) { {
-        	echo "ip: ".$ip->ip."\n";	
-        	echo getSNMPSysName($ip->ip);
+        	echo "ip: ".$ip->ip." ";	
+        	echo getSNMPSysName($ip->ip)." ".getSNMPSysDesc($ip->ip)."\n";
 	    }
     }
 ?>

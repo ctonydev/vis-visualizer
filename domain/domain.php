@@ -6,5 +6,6 @@ include("graphvis/attributes.php");
 include("graphvis/graphvis.php");
 include("network/network.php");
 include("network/ip.php");
+include("network/host.php");
 ?>
 
