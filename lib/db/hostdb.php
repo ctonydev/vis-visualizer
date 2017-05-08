@@ -2,11 +2,10 @@
 function saveHost($host){
 	$conn = getDBConnection();
 
-	$sql = "REPLACE into host values('".$host->sysname."','".$host->sysdesc."',now())";
-//	echo $sql."\n";
-	if ($conn->query($sql) != TRUE) {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}	
+	$stmt = $conn->prepare("REPLACE into host (sysname, sysdesc, lastseen) VALUES (?,?,now())");
+	$stmt->bind_param("ss", $host->sysname, $host->sysdesc);
+	$stmt->execute();
+
 	closeDBConnection($conn);
 } 
 

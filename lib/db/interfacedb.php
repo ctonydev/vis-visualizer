@@ -13,5 +13,14 @@ function eraseInterfaces($host) {
 	closeDBConnection($conn);	
 }
 
+function saveInterface($ip){
+	$conn = getDBConnection();
+
+	$stmt = $conn->prepare("REPLACE into interface (host, name, ip, mask) VALUES (?,?,?,?)");
+	$stmt->bind_param("ssss", $ip->host, $ip->name, $ip->ip, $ip->mask);
+	$stmt->execute();
+
+	closeDBConnection($conn);
+} 
 
 ?>

@@ -20,6 +20,12 @@
 
 	        	eraseInterfaces($host);
 	        	$interfaces = getInterfaces($ip, $host);
+	        //	var_dump($interfaces);
+
+	        	for ($i=0; $i<count($interfaces);$i++){
+	        		saveInterface($interface[$i]);
+
+	        	}
 	        }
 	    }
     }

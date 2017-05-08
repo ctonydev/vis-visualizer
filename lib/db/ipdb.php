@@ -3,11 +3,10 @@
 function saveIp($ip){
 	$conn = getDBConnection();
 
-	$sql = "REPLACE into ip values('".$ip->ip."',now(),'".$ip->ping."','".$ip->laststatus."','".$ip->hostname."')";
-//	echo $sql."\n";
-	if ($conn->query($sql) != TRUE) {
-	    echo "Error: " . $sql . "<br>" . $conn->error;
-	}	
+	$stmt = $conn->prepare("REPLACE into ip (ip, ping, laststatus, hostname, lastseen) values (?,?,?,?,now())");
+	$stmt->bind_param("sdis", $ip->ip,$ip->ping,$ip->laststatus,$ip->hostname);
+	$stmt->execute();
+
 	closeDBConnection($conn);
 } 
 
