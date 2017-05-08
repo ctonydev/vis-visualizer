@@ -43,6 +43,7 @@ CREATE TABLE `interface` (
   `name` varchar(45) NOT NULL,
   `ip` varchar(45) NOT NULL,
   `mask` varchar(45) NOT NULL,
+  `index` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -88,4 +89,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  0:48:58
+-- Dump completed on 2017-05-08  1:17:29

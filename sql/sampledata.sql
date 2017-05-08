@@ -36,7 +36,7 @@ CREATE TABLE `host` (
 
 LOCK TABLES `host` WRITE;
 /*!40000 ALTER TABLE `host` DISABLE KEYS */;
-INSERT INTO `host` VALUES ('','','2017-05-08 00:39:21'),('STRING: gateway.ascot.khubla.lan','STRING: pfSense gateway.ascot.khubla.lan 2.3.3-RELEASE nanobsd FreeBSD 10.3-RELEASE-p16 i386','2017-05-08 00:48:55');
+INSERT INTO `host` VALUES ('','','2017-05-08 00:54:15'),('STRING:','STRING: GS108Tv2','2017-05-08 00:52:01'),('STRING: bernice.ascot.khubla.lan','STRING: FreeBSD bernice.ascot.khubla.lan 11.0-RELEASE-p9 FreeBSD 11.0-RELEASE-p9 #0: Tue Apr 11 08:48:40 UTC 2017     root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC amd64','2017-05-08 00:52:13'),('STRING: gateway.ascot.khubla.lan','STRING: pfSense gateway.ascot.khubla.lan 2.3.3-RELEASE nanobsd FreeBSD 10.3-RELEASE-p16 i386','2017-05-08 01:17:12'),('STRING: gateway.spring.khubla.lan','STRING: pfSense gateway.spring.khubla.lan 2.4.0-BETA pfSense FreeBSD 11.0-RELEASE-p8 arm','2017-05-08 00:52:25');
 /*!40000 ALTER TABLE `host` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,6 +53,7 @@ CREATE TABLE `interface` (
   `name` varchar(45) NOT NULL,
   `ip` varchar(45) NOT NULL,
   `mask` varchar(45) NOT NULL,
+  `index` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -127,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  0:49:01
+-- Dump completed on 2017-05-08  1:17:33

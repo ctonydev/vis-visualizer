@@ -7,6 +7,7 @@ class IFace
 	var $name;
 	var $ip;
 	var $mask;
+	var $index;
 }
 
 ?>

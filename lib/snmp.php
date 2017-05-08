@@ -33,10 +33,13 @@ function getInterfaces($ip, $host) {
 	for ( $i=1; $i<=$interface_count;$i++){
 		$inter = new IFace;
 		$inter->host = $host->sysname;
-		$name = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i))."\n";
-		echo ($name);
+		$name = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i));
+		echo ($name."\n");
+		$index = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifIndex.".$i));
+		echo ($index."\n");
+		$inter->index = $index;
 		$inter->ip = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i));
-		$inter->name = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i));
+		$inter->name = $name;
 		$inter->mask = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i));
 	}
 }
