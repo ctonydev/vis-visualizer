@@ -7,11 +7,17 @@ include_once("lib/db.php");
 */
 function getNodeName($ip){
 	if (null!=$ip->hostname){
-		return $ip->hostname;
+		if($ip->hostname != $ip->ip){
+			$ret = shortname($ip->hostname);
+			return $ret;
+		}
 	}
 	return $ip->ip;
 }
 
+function shortname($name){
+	return substr($name, 0, strpos($name, '.'));
+}
 
 /*
 * get router nodes (hosts that have more than one ip)

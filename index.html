@@ -52,9 +52,9 @@
             physics: {
                 stabilization: false,
                 barnesHut: {
-                    gravitationalConstant: -10000,
+                    gravitationalConstant: -1500,
                     springConstant: 0.002,
-                    springLength: 100
+                    springLength: 10
                 }
             },
             layout: {
@@ -70,7 +70,7 @@
          */
         function redrawAll(json) {
 
-            console.log(json);
+ //           console.log(json);
 
             // clear old data
             nodes.clear();

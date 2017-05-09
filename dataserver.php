@@ -26,11 +26,12 @@ $all_interfaces = getAllInterfaces();
 foreach($routers as $host) {
 	$node = new Node;
 	// build the node
-	$node->label = $host->sysname;
+	$node->label = shortname($host->sysname);
 	$node->id =  $host->sysname;
 	$node->title =  $host->sysname;
 	$node->color = $colors["up-router"];
 	$node->size = $node_conf["size"];
+	$node->font = $node_conf["font"];
 	
 	$attributes = new Attributes;
 	$attributes->Weight=1.0;
@@ -142,5 +143,6 @@ foreach($all_interfaces as $interface) {
 
 $json = json_encode($data);
 echo $json;
+
 
 ?>
