@@ -7,18 +7,19 @@
     $ips = getIps();
 
     foreach($ips as $ip) { 
-       	$time = ping($ip);
         echo "ip: ".$ip->ip."\n";
+       	$time = ping($ip->ip);
         if (false !=$time) {
-        	echo "ip: ".$ip." time: ".$time."\n";
-	        $ipObj = new Ip();
-	        $ipObj->ip=$ip;
-	        $ipObj->ping=$time;
-	        $ipObj->laststatus=1;
-            $ipObj->hostname = gethostbyaddr($ip);
-
-//	        saveIp($ipObj);
-	    }   
+        	echo "ip: ".$ip->ip." time: ".$time."\n";
+	        $ip->ping=$time;
+	        $ip->laststatus=1;
+            $ip->hostname = gethostbyaddr($ip->ip);
+	        saveIp($ip);
+	    } else {
+            echo "ip: ".$ip->ip." down\n";
+            $ip->laststatus=0;
+            saveIp($ip);
+        } 
     }
 ?>
 

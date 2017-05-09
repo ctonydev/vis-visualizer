@@ -1,6 +1,7 @@
 <?php
 
 function saveIp($ip){
+	var_dump($ip);
 	$conn = getDBConnection();
 
 	$stmt = $conn->prepare("REPLACE into ip (ip, ping, laststatus, hostname, lastseen) values (?,?,?,?,now())");
