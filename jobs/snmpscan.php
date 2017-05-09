@@ -2,7 +2,7 @@
     include_once("config.php");
     include_once("lib/db.php");
     include_once("lib/snmp.php");
-    include_once("domain/domain.php");
+    include_once("lib/domain/domain.php");
 
     $ips = getIps();
 

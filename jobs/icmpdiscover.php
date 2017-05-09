@@ -3,7 +3,7 @@
     include_once("lib/db.php");
     include_once("lib/ping.php");
     include_once("lib/arp.php");
-    include_once("domain/domain.php");
+    include_once("lib/domain/domain.php");
 
     $ips = getNetworkIps();
 

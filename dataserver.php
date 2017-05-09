@@ -1,7 +1,7 @@
 <?php   
 
 include_once("config.php");
-include_once("domain/domain.php");
+include_once("lib/domain/domain.php");
 include_once("lib/analysis.php");
 
 $data = new graphvis;
