@@ -17,6 +17,7 @@ $nets = getDistictNetworks();
 //var_dump($nets);
 $routers = getRouterHosts();
 //var_dump($routers);
+$ips = getIps();
 
 /*
 * create nodes for every router
@@ -41,7 +42,6 @@ foreach($routers as $host) {
 /*
 * create nodes for every non-router ip
 */
-$ips = getIps();
 foreach($ips as $ip) {
 	/*
 	* check if the ip is attached to a router
@@ -70,10 +70,34 @@ foreach($ips as $ip) {
 /*
 * walk the ips again, this time creating edges to appropriate routers
 */
+foreach($ips as $ip) {
+	/*
+	* check if the ip is attached to a router
+	*/
+	if (false==isRouterIp($ip)){
+		/*
+		* ip is not on a router draw the node
+		*/
+		$edge = new Edge;
+		$edge->id=uniqid();
+		$edge->from = "gateway.spring.khubla.lan";
+		$edge->to = $ip->ip;
+		$edge->color = "rgb(229,164,67)";
+		$edge->size = 5.0;
+
+		$attributes = new Attributes;
+		$attributes->Weight=1.0;
+		$edge->attributes = $attributes;
+
+		array_push($data->edges, $edge);
+	}
+}
+
+
+
 
 
 $json = json_encode($data);
-
 echo $json;
 
 ?>
