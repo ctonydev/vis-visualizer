@@ -18,6 +18,7 @@ if ($conn->connect_error) {
 $routers = getRouterHosts();
 //var_dump($routers);
 $ips = getIps();
+$all_interfaces = getAllInterfaces();
 
 /*
 * create nodes for every router
@@ -68,7 +69,7 @@ foreach($ips as $ip) {
 }
 
 /*
-* walk the ips again, this time creating edges to appropriate routers
+* walk the ips again, this time creating edges from non-routers to appropriate routers
 */
 foreach($ips as $ip) {
 	/*
@@ -76,7 +77,7 @@ foreach($ips as $ip) {
 	*/
 	if (false==isRouterIp($ip)){
 		/*
-		* ip is not on a router draw the node
+		* get the default router for the ip
 		*/
 		$rtr_hostname = getRouterForIp($ip);
 
@@ -92,6 +93,45 @@ foreach($ips as $ip) {
 		$edge->attributes = $attributes;
 
 		array_push($data->edges, $edge);
+	}
+}
+
+/*
+* walk the router ips, this time creating edges from routers to appropriate routers
+*/
+foreach($all_interfaces as $interface) {
+	/*
+	* get the router name for the ip
+	*/
+	$interface_hostname =$interface->host;
+
+	/*
+	* get ip object for ip address
+	*/
+	$ipObj = getIp($interface->ip);
+	/*
+	* get the default router for the ip
+	*/
+	$rtr_hostname = getRouterForIp($ipObj);
+	
+//	echo $interface->ip." : ".$interface_hostname." ".$rtr_hostname."<br>\n";
+	if (false!=$rtr_hostname){
+		if ($rtr_hostname!=$interface_hostname){
+	//	var_dump($interface->ip);
+
+			$edge = new Edge;
+			$edge->id=uniqid();
+			$edge->from = $interface_hostname;
+			$edge->to = $rtr_hostname;
+			$edge->color = "rgb(229,164,255)";
+			$edge->size = 5.0;
+
+			$attributes = new Attributes;
+			$attributes->Weight=1.0;
+			$edge->attributes = $attributes;
+
+			array_push($data->edges, $edge);
+		}	
 	}
 }
 
