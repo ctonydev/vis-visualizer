@@ -62,7 +62,7 @@ foreach($ips as $ip) {
 			$node->color = $colors["down-host"];
 		} 
 		$node->size = $node_conf["size"];
-		
+		$node->font = $node_conf["font"];
 		$attributes = new Attributes;
 		$attributes->Weight=1.0;
 		$node->attributes = $attributes;

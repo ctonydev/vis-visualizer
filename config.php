@@ -22,4 +22,5 @@ $colors["down-edge"]="rgb(164,164,164)";
 
 $edge_conf["size"]=2;
 $node_conf["size"]=2;
+$node_conf["font"]="10px";
 ?>
