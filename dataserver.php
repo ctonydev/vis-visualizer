@@ -2,43 +2,43 @@
 
 include_once("config.php");
 include_once("domain/domain.php");
+include_once("lib/analysis.php");
 
 $data = new graphvis;
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-// grab all hosts
-$sql = "SELECT * FROM host";
-$result = $conn->query($sql);
+$nets = getDistictNetworks();
+//var_dump($nets);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
+/*
+* grab all ips
+*/
+$ips = getIps();
+//var_dump($ips);
+for ($i=0; $i<count($ips);$i++){
+	$ip =$ips[$i];
 
-		$node = new Node;
-		// build the node
-		$node->label = $row["hostname"];
-		$node->id = $row["id"];
-		$node->title = $row["ip"];
-		$node->color = "rgb(229,164,67)";
-		$node->size = 5.0;
-		
-		$attributes = new Attributes;
-		$attributes->Weight=1.0;
-		$node->attributes = $attributes;
+	$node = new Node;
+	// build the node
+	$node->label =  getNodeName($ip);
+	$node->id =  $ip->ip;
+	$node->title =  $ip->ip;
+	$node->color = "rgb(229,164,67)";
+	$node->size = 5.0;
+	
+	$attributes = new Attributes;
+	$attributes->Weight=1.0;
+	$node->attributes = $attributes;
 
-		// add the node
-		array_push($data->nodes, $node);
-    }
-} else {
-    echo "0 results";
+	// add the node
+	array_push($data->nodes, $node);
 }
-$conn->close();
 
 $json = json_encode($data);
 

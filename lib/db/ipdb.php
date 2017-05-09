@@ -28,6 +28,8 @@ function getIps() {
 	    	$o->lastseen = $row["lastseen"];
 	    	$o->ping = $row["ping"];
 	    	$o->laststatus = $row["laststatus"];
+	    	$o->hostname = $row["hostname"];
+
 	    	array_push($ips, $o);
 	    }
 	} else {
