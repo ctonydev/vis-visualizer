@@ -40,6 +40,19 @@ function isRouterIp($ip){
 	$hostname = getHostNameByIP($ip);
 	return (false !=$hostname);
 }
+
+/*
+* get the appropriate router for the ip
+*/
+function getRouterForIp($ip){
+	$interfaces = getAllInterfaces();
+	foreach ($interfaces as $interface){
+		$range = $interface->ip."/".mask2cidr($interface->mask)."\n";
+		if (true==cidr_match($ip->ip, $range)){
+			return $interface->host;
+		}
+	}
+}
 ?>
 
 

@@ -13,7 +13,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$nets = getDistictNetworks();
+//$nets = getDistictNetworks();
 //var_dump($nets);
 $routers = getRouterHosts();
 //var_dump($routers);
@@ -78,9 +78,11 @@ foreach($ips as $ip) {
 		/*
 		* ip is not on a router draw the node
 		*/
+		$rtr_hostname = getRouterForIp($ip);
+
 		$edge = new Edge;
 		$edge->id=uniqid();
-		$edge->from = "gateway.spring.khubla.lan";
+		$edge->from = $rtr_hostname;
 		$edge->to = $ip->ip;
 		$edge->color = "rgb(229,164,67)";
 		$edge->size = 5.0;
@@ -92,10 +94,6 @@ foreach($ips as $ip) {
 		array_push($data->edges, $edge);
 	}
 }
-
-
-
-
 
 $json = json_encode($data);
 echo $json;
