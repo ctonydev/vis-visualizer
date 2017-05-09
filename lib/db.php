@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 include_once("config.php");
 include_once("lib/domain/domain.php");
@@ -8,12 +8,9 @@ include_once("lib/db/hostdb.php");
 include_once("lib/db/interfacedb.php");
 
 function getDBConnection() {
-	global $db_servername;
-	global $db_username;
-	global $db_password;
-	global $db_dbname;
+	global $db;
 
-	$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
+	$conn = new mysqli($db["servername"], $db["username"], $db["password"], $db["dbname"]);
 	// Check connection
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);

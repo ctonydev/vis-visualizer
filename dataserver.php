@@ -7,7 +7,7 @@ include_once("lib/analysis.php");
 $data = new graphvis;
 
 // Create connection
-$conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
+$conn = new mysqli($db["servername"], $db["username"], $db["password"], $db["dbname"]);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
