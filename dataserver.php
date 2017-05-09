@@ -29,7 +29,7 @@ foreach($routers as $host) {
 	$node->label = $host->sysname;
 	$node->id =  $host->sysname;
 	$node->title =  $host->sysname;
-	$node->color = "rgb(229,164,255)";
+	$node->color = $colors["up-router"];
 	$node->size = 5.0;
 	
 	$attributes = new Attributes;
@@ -56,7 +56,7 @@ foreach($ips as $ip) {
 		$node->label =  getNodeName($ip);
 		$node->id =  $ip->ip;
 		$node->title =  $ip->ip;
-		$node->color = "rgb(229,164,67)";
+		$node->color = $colors["up-host"];
 		$node->size = 5.0;
 		
 		$attributes = new Attributes;
@@ -85,7 +85,7 @@ foreach($ips as $ip) {
 		$edge->id=uniqid();
 		$edge->from = $rtr_hostname;
 		$edge->to = $ip->ip;
-		$edge->color = "rgb(229,164,67)";
+		$edge->color = $colors["up-edge"];
 		$edge->size = 5.0;
 
 		$attributes = new Attributes;
@@ -123,7 +123,7 @@ foreach($all_interfaces as $interface) {
 			$edge->id=uniqid();
 			$edge->from = $interface_hostname;
 			$edge->to = $rtr_hostname;
-			$edge->color = "rgb(229,164,255)";
+			$edge->color = $colors["up-edge"];
 			$edge->size = 5.0;
 
 			$attributes = new Attributes;
