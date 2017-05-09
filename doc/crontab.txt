@@ -1,4 +1,4 @@
 @hourly /usr/local/bin/php /usr/home/tom/netvis/icmpdiscover.php >  /usr/home/tom/netvis/logs/icmpdiscover.log 2>&1
 * * * * * /usr/local/bin/php /usr/home/tom/netvis/icmpupdate.php > /usr/home/tom/netvis/logs/icmpupdate.log 2>&1
-@hourly /usr/local/bin/php /usr/home/tom/netvis/snmpdiscover.php > /usr/home/tom/netvis/logs/snmpdiscover.log 2>&1
+@hourly /usr/local/bin/php /usr/home/tom/netvis/snmpscan.php > /usr/home/tom/netvis/logs/snmpscan.log 2>&1
 

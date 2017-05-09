@@ -19,7 +19,7 @@
 	        	saveHost($host);
 
 	        	eraseInterfaces($host);
-	        	$interfaces = getInterfaces($ip, $host);
+	        	$interfaces = getInterfacesOnSNMPHost($ip, $host);
 	        //	var_dump($interfaces);
 
 	        	for ($i=0; $i<count($interfaces);$i++){
