@@ -34,4 +34,26 @@ function getAllHosts() {
 	return $hosts;
 }
 
+/*
+* look up a hostname by the ip, using the interface table
+*/
+
+function getHostNameByIP($ip){
+	$conn = getDBConnection();
+
+	// query the interface table
+	$sql = "SELECT host FROM interface where ip='".$ip->ip."'";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		$r = $result->fetch_assoc();
+//		var_dump($r["host"]);
+		return $r["host"];
+	} else {
+		return false;
+	}
+	closeDBConnection($conn);
+	return $hosts;
+}
+
 ?>

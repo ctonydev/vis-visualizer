@@ -45,8 +45,6 @@ function getAllInterfaces() {
 	    	$o->index = $row["index"];	    		    		    
 	    	array_push($interfaces, $o);
 	    }
-	} else {
-	    echo "0 results";
 	}
 	closeDBConnection($conn);
 	return $interfaces;
@@ -72,6 +70,34 @@ function getDistictNetworks() {
 	}
 	closeDBConnection($conn);
 	return $nets;
+}
+
+function getInterfaces($host){
+	$conn = getDBConnection();
+
+	// entire list
+	$interfaces = array();
+
+	// grab all networks
+	$sql = "SELECT * FROM interface where host='".$host->sysname."'";
+//	echo $sql;
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+	    // output data of each row
+	    while($row = $result->fetch_assoc()) {
+	    	$o = new Iface;
+	    	$o->id = $row["id"];
+	    	$o->host = $row["host"];
+	    	$o->name = $row["name"];
+	    	$o->ip = $row["ip"];
+	    	$o->mask = $row["mask"];	    		    		    	
+	    	$o->index = $row["index"];	    		    		    
+	    	array_push($interfaces, $o);
+	    }
+	}
+	closeDBConnection($conn);
+	return $interfaces;
 }
 
 ?>

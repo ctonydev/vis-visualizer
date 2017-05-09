@@ -15,21 +15,19 @@ if ($conn->connect_error) {
 
 $nets = getDistictNetworks();
 //var_dump($nets);
+$routers = getRouterHosts();
+//var_dump($routers);
 
 /*
-* grab all ips
+* create nodes for every router
 */
-$ips = getIps();
-//var_dump($ips);
-for ($i=0; $i<count($ips);$i++){
-	$ip =$ips[$i];
-
+foreach($routers as $host) {
 	$node = new Node;
 	// build the node
-	$node->label =  getNodeName($ip);
-	$node->id =  $ip->ip;
-	$node->title =  $ip->ip;
-	$node->color = "rgb(229,164,67)";
+	$node->label = $host->sysname;
+	$node->id =  $host->sysname;
+	$node->title =  $host->sysname;
+	$node->color = "rgb(229,164,255)";
 	$node->size = 5.0;
 	
 	$attributes = new Attributes;
@@ -39,6 +37,40 @@ for ($i=0; $i<count($ips);$i++){
 	// add the node
 	array_push($data->nodes, $node);
 }
+
+/*
+* create nodes for every non-router ip
+*/
+$ips = getIps();
+foreach($ips as $ip) {
+	/*
+	* check if the ip is attached to a router
+	*/
+	if (false==isRouterIp($ip)){
+		/*
+		* ip is not on a router draw the node
+		*/
+		$node = new Node;
+		// build the node
+		$node->label =  getNodeName($ip);
+		$node->id =  $ip->ip;
+		$node->title =  $ip->ip;
+		$node->color = "rgb(229,164,67)";
+		$node->size = 5.0;
+		
+		$attributes = new Attributes;
+		$attributes->Weight=1.0;
+		$node->attributes = $attributes;
+
+		// add the node
+		array_push($data->nodes, $node);
+	}
+}
+
+/*
+* walk the ips again, this time creating edges to appropriate routers
+*/
+
 
 $json = json_encode($data);
 

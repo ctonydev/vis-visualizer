@@ -10,14 +10,35 @@ function getNodeName($ip){
 		return $ip->hostname;
 	}
 	return $ip->ip;
+}
 
+
+/*
+* get router nodes (hosts that have more than one ip)
+*/
+function getRouterHosts() {
+	$ret = array();
+	$hosts = getAllHosts();
+	for ($i=0; $i<count($hosts);$i++){
+		$host =$hosts[$i];
+	//	var_dump($host);
+		$interfaces = getInterfaces($host);
+	//	var_dump($interfaces);
+		if (false!=$interfaces){
+			if (count($interfaces)>1){
+			$ret[$host->sysname]=$host;
+			}
+		}
+	}
+	return $ret;
 }
 
 /*
-* for every network we know about, find the router ip
+* is router ip?
 */
-function mapNetworksToRouterNodes(){
-
+function isRouterIp($ip){
+	$hostname = getHostNameByIP($ip);
+	return (false !=$hostname);
 }
 ?>
 
