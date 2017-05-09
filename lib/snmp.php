@@ -30,7 +30,7 @@ function getInterfacesOnSNMPHost($ip, $host) {
 
 	$addresses =  snmp2_walk ($ip->ip, $snmp_community, "IP-MIB::ipAdEntAddr");
 //	var_dump($addresses);
-	$interfaceNumbers = snmp2_walk ($ip->ip, $snmp_community, "IP-MIB::ipAdEntIfIndex");
+	$interfaceNumbers = snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntIfIndex");
 //	var_dump($interfaceNumbers);
 	$netmasks = snmp2_walk ($ip->ip, $snmp_community, "IP-MIB::ipAdEntNetMask");
 //	var_dump($netmasks);

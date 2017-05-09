@@ -9,6 +9,13 @@ $db["username"]= "netvis";
 $db["password"] = "netvis";
 $db["dbname"] = "netvis";
 
-$snmp_community="public";
+$snmp = array();
+$snmp["community"]="public";
+
+$colors = array();
+$colors["up-router"]="";
+$colors["down-router"]="";
+$colors["up-host"]="";
+$colors["up-host"]="";
 
 ?>
