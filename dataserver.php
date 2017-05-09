@@ -30,7 +30,7 @@ foreach($routers as $host) {
 	$node->id =  $host->sysname;
 	$node->title =  $host->sysname;
 	$node->color = $colors["up-router"];
-	$node->size = 5.0;
+	$node->size = $node_conf["size"];
 	
 	$attributes = new Attributes;
 	$attributes->Weight=1.0;
@@ -61,7 +61,7 @@ foreach($ips as $ip) {
 		} else {
 			$node->color = $colors["down-host"];
 		} 
-		$node->size = 5.0;
+		$node->size = $node_conf["size"];
 		
 		$attributes = new Attributes;
 		$attributes->Weight=1.0;
@@ -90,7 +90,7 @@ foreach($ips as $ip) {
 		$edge->from = $rtr_hostname;
 		$edge->to = $ip->ip;
 		$edge->color = $colors["up-edge"];
-		$edge->size = 5.0;
+		$edge->size = $edge_conf["size"];
 
 		$attributes = new Attributes;
 		$attributes->Weight=1.0;
@@ -104,6 +104,7 @@ foreach($ips as $ip) {
 * walk the router ips, this time creating edges from routers to appropriate routers
 */
 foreach($all_interfaces as $interface) {
+
 	/*
 	* get the router name for the ip
 	*/
@@ -128,7 +129,7 @@ foreach($all_interfaces as $interface) {
 			$edge->from = $interface_hostname;
 			$edge->to = $rtr_hostname;
 			$edge->color = $colors["up-edge"];
-			$edge->size = 5.0;
+			$edge->size = $edge_conf["size"];
 
 			$attributes = new Attributes;
 			$attributes->Weight=1.0;
