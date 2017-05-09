@@ -114,7 +114,7 @@ foreach($all_interfaces as $interface) {
 	*/
 	$rtr_hostname = getRouterForIp($ipObj);
 	
-//	echo $interface->ip." : ".$interface_hostname." ".$rtr_hostname."<br>\n";
+	//echo $interface->ip." : ".$interface_hostname." ".$rtr_hostname."<br>\n";
 	if (false!=$rtr_hostname){
 		if ($rtr_hostname!=$interface_hostname){
 	//	var_dump($interface->ip);

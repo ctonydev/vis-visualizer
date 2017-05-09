@@ -23,7 +23,7 @@ function snmp_value($v){
 /*
 * pass IP to query SMMP on and host to connect these interfaces to in the DB
 */
-function getInterfaces($ip, $host) {
+function getInterfacesOnSNMPHost($ip, $host) {
 	global $snmp_community;
 
 	$ret = array();
