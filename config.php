@@ -13,9 +13,9 @@ $snmp = array();
 $snmp["community"]="public";
 
 $colors = array();
-$colors["up-router"]="rgb(229,164,255)";
+$colors["up-router"]="rgb(58, 132, 129)";
 $colors["down-router"]="rgb(164,164,164)";
-$colors["up-host"]="rgb(229,164,67)";
+$colors["up-host"]="rgb(58, 132, 59)";
 $colors["down-host"]="rgb(164,164,164)";
 $colors["up-edge"]="rgb(0,0,0)";
 $colors["down-edge"]="rgb(164,164,164)";
