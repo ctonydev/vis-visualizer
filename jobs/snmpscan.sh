@@ -1,3 +1,3 @@
 #!/bin/bash
 
-php -f jobs/snmpscan.php
+/usr/local/bin/php  -f jobs/snmpscan.php

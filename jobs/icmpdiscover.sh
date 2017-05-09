@@ -1,3 +1,3 @@
 #!/bin/bash
 
-php -f jobs/icmpdiscover.php
+/usr/local/bin/php  -f jobs/icmpdiscover.php

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-php -f jobs/icmpupdate.php
+/usr/local/bin/php  -f jobs/icmpupdate.php
