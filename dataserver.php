@@ -56,7 +56,11 @@ foreach($ips as $ip) {
 		$node->label =  getNodeName($ip);
 		$node->id =  $ip->ip;
 		$node->title =  $ip->ip;
-		$node->color = $colors["up-host"];
+		if (1==$ip->laststatus){
+			$node->color = $colors["up-host"];
+		} else {
+			$node->color = $colors["down-host"];
+		} 
 		$node->size = 5.0;
 		
 		$attributes = new Attributes;
