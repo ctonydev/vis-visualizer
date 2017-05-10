@@ -6,17 +6,7 @@ include_once("lib/analysis.php");
 
 $data = new graphvis;
 
-// Create connection
-$conn = new mysqli($db["servername"], $db["username"], $db["password"], $db["dbname"]);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-//$nets = getDistictNetworks();
-//var_dump($nets);
 $routers = getRouterHosts();
-//var_dump($routers);
 $ips = getIps();
 $all_interfaces = getAllInterfaces();
 
@@ -32,10 +22,7 @@ foreach($routers as $host) {
 	$node->color = $colors["up-router"];
 	$node->size = $node_conf["size"];
 	$node->font = $node_conf["font"];
-	
-	$attributes = new Attributes;
-	$attributes->Weight=1.0;
-	$node->attributes = $attributes;
+	$node->mass = $node_conf["router-mass"];	
 
 	// add the node
 	array_push($data->nodes, $node);
@@ -64,9 +51,7 @@ foreach($ips as $ip) {
 		} 
 		$node->size = $node_conf["size"];
 		$node->font = $node_conf["font"];
-		$attributes = new Attributes;
-		$attributes->Weight=1.0;
-		$node->attributes = $attributes;
+		$node->mass = $node_conf["host-mass"];
 
 		// add the node
 		array_push($data->nodes, $node);

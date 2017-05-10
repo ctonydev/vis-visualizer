@@ -8,6 +8,7 @@ class Node
 	var $color;
 	var $size;
 	var $attributes;
+	var $mass;
 }
 
 ?>
