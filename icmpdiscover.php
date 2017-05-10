@@ -19,9 +19,6 @@
             $ipObj->source="icmp";
 
 	        saveIp($ipObj);
-
-//            $mac = getMAC($ip);
- //           echo $mac;
 	    }
     }
 ?>

@@ -8,30 +8,27 @@
     $ips = getNetworkIps();
 
     foreach($ips as $ip) {
-        $time = ping($ip);
+        $found = tcp_conn($ip, 62078);
     	
-        if (false !=$time) {
-        	echo "ip: ".$ip." time: ".$time."\n";
+        if (true==$found) {
+        	echo "ip: ".$ip."\n";
 	        $ipObj = new Ip();
 	        $ipObj->ip=$ip;
-	        $ipObj->ping=$time;
+	        $ipObj->ping=0;
 	        $ipObj->laststatus=1;
             $ipObj->hostname = gethostbyaddr($ip);
-
+            $ipObj->source = "ios";
 	        saveIp($ipObj);
-
-//            $mac = getMAC($ip);
- //           echo $mac;
 	    }
     }
 
-function tcp_conn($ip) {
+function tcp_conn($ip, $service_port) {
 	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 	if ($socket === false) {
 	    echo "socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n";
 	    return false;
 	} else {
-		$result = socket_connect($socket, $address, $service_port);
+		$result = socket_connect($socket, $ip, $service_port);
 		if ($result === false) {
 			return false;
 		} else {
