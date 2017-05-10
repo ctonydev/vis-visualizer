@@ -17,7 +17,7 @@ $colors["down-host"]="rgb(164,164,164)";
 $colors["up-edge"]="rgb(0,0,0)";
 $colors["down-edge"]="rgb(164,164,164)";
 
-$edge_conf["size"]=2;
+$edge_conf["width"]=1;
 $node_conf["size"]=2;
 $node_conf["font"]="10px";
 ?>

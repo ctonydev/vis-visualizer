@@ -6,8 +6,8 @@ class Edge
 	var $from;
 	var $to;
 	var $color;
-	var $size;
-	var $attributes;	
+	var $width;	
+	var $dashes = false;
 }
 
 ?>

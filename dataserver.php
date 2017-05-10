@@ -91,12 +91,7 @@ foreach($ips as $ip) {
 		$edge->from = $rtr_hostname;
 		$edge->to = $ip->ip;
 		$edge->color = $colors["up-edge"];
-		$edge->size = $edge_conf["size"];
-
-		$attributes = new Attributes;
-		$attributes->Weight=1.0;
-		$edge->attributes = $attributes;
-
+		$edge->width = $edge_conf["width"];
 		array_push($data->edges, $edge);
 	}
 }
@@ -130,16 +125,22 @@ foreach($all_interfaces as $interface) {
 			$edge->from = $interface_hostname;
 			$edge->to = $rtr_hostname;
 			$edge->color = $colors["up-edge"];
-			$edge->size = $edge_conf["size"];
-
-			$attributes = new Attributes;
-			$attributes->Weight=1.0;
-			$edge->attributes = $attributes;
-
+			$edge->width = $edge_conf["width"];
 			array_push($data->edges, $edge);
 		}	
 	}
 }
+
+// add a line b/t the gateways
+$edge = new Edge;
+$edge->id=uniqid();
+$edge->from = "gateway.ascot.khubla.lan";
+$edge->to = "gateway.spring.khubla.lan";
+$edge->color = "blue";
+$edge->width = 2;
+$edge->dashes = true;
+
+array_push($data->edges, $edge);
 
 $json = json_encode($data);
 echo $json;
