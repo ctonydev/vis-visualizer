@@ -10,12 +10,13 @@
     foreach($ips as $ip) {
         $time = ping($ip);
         if (false !=$time) {
-        	echo "ip: ".$ip." time: ".$time."\n";
+            $hostname = gethostbyaddr($ip);
+        	echo "ip: ".$ip." (".$hostname.") ping time(s): ".$time."\n";
 	        $ipObj = new Ip();
 	        $ipObj->ip=$ip;
 	        $ipObj->ping=$time;
 	        $ipObj->laststatus=1;
-            $ipObj->hostname = gethostbyaddr($ip);
+            $ipObj->hostname = $hostname;
             $ipObj->source="icmp";
 
 	        saveIp($ipObj);
