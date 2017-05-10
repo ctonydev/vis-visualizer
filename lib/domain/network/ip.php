@@ -7,6 +7,7 @@ class Ip
 	var $ping;
 	var $laststatus;
 	var $hostname;
+	var $source;
 }
 
 ?>

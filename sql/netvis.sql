@@ -47,7 +47,7 @@ CREATE TABLE `interface` (
   PRIMARY KEY (`id`),
   KEY `host_idx` (`host`),
   CONSTRAINT `host_fk` FOREIGN KEY (`host`) REFERENCES `host` (`sysname`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,6 +63,7 @@ CREATE TABLE `ip` (
   `ping` float NOT NULL,
   `laststatus` int(11) NOT NULL,
   `hostname` varchar(128) DEFAULT NULL,
+  `source` varchar(10) NOT NULL,
   PRIMARY KEY (`ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -91,4 +92,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-08  3:12:20
+-- Dump completed on 2017-05-10  1:06:54

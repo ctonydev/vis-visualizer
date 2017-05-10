@@ -3,8 +3,8 @@
 function saveIp($ip){
 	$conn = getDBConnection();
 
-	$stmt = $conn->prepare("REPLACE into ip (ip, ping, laststatus, hostname, lastseen) values (?,?,?,?,now())");
-	$stmt->bind_param("sdis", $ip->ip,$ip->ping,$ip->laststatus,$ip->hostname);
+	$stmt = $conn->prepare("REPLACE into ip (ip, ping, laststatus, hostname, source, lastseen ) values (?,?,?,?,?,now())");
+	$stmt->bind_param("sdiss", $ip->ip,$ip->ping,$ip->laststatus,$ip->hostname, $ip->source);
 	$stmt->execute();
 
 	closeDBConnection($conn);
@@ -29,6 +29,7 @@ function getIps() {
 	    	$o->ping = $row["ping"];
 	    	$o->laststatus = $row["laststatus"];
 	    	$o->hostname = $row["hostname"];
+	    	$o->source = $row["source"];	    	
 
 	    	array_push($ips, $o);
 	    }
@@ -55,7 +56,7 @@ function getIp($ip) {
     	$o->ping = $row["ping"];
     	$o->laststatus = $row["laststatus"];
     	$o->hostname = $row["hostname"];
-
+	    $o->source = $row["source"];
 		return $o;
 	} else {
 		return false;

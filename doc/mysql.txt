@@ -1,0 +1,2 @@
+GRANT ALL PRIVILEGES ON netvis.* TO 'netvis'@'localhost' identified by 'netvis';
+mysqldump -d -u root netvis > sql/netvis.sql
