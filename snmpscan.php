@@ -3,6 +3,7 @@
     include_once("lib/db.php");
     include_once("lib/snmp.php");
     include_once("lib/domain/domain.php");
+    include_once("lib/db/ipdb.php");
 
     $ips = getIps();
 
