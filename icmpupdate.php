@@ -8,7 +8,7 @@
     $ips = getIps();
 
     foreach($ips as $ip) { 
-        echo "ip: ".$ip->ip."\n";
+       // echo "ip: ".$ip->ip."\n";
        	$time = ping($ip->ip);
         if (false !=$time) {
         	echo "ip: ".$ip->ip." time: ".$time."\n";
