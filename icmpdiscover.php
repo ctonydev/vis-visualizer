@@ -6,6 +6,8 @@
     include_once("lib/arp.php");
     include_once("lib/domain/domain.php");
 
+    date_default_timezone_set("UTC");
+    echo date("l jS \of F Y h:i:s A\n");
     $ips = getNetworkIps();
 
     foreach($ips as $ip) {

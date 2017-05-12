@@ -6,6 +6,8 @@
     include_once("lib/arp.php");
     include_once("lib/domain/domain.php");
 
+    date_default_timezone_set("UTC");
+    echo date("l jS \of F Y h:i:s A\n");
     $ips = getNetworkIps();
 
     foreach($ips as $ip) {
@@ -23,7 +25,7 @@
 	    }
     }
 
-function tcp_conn($ip, $service_port) {
+	function tcp_conn($ip, $service_port) {
 	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 	if ($socket === false) {
 	    echo "socket_create() failed: reason: " . socket_strerror(socket_last_error()) . "\n";

@@ -5,6 +5,8 @@
     include_once("lib/domain/domain.php");
     include_once("lib/db/ipdb.php");
 
+    date_default_timezone_set("UTC");
+    echo date("l jS \of F Y h:i:s A\n");
     $ips = getIps();
 
     foreach($ips as $ip) { {
