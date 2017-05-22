@@ -1,4 +1,5 @@
 <?php
+	chdir(dirname(__FILE__));
     include_once("config.php");
     include_once("lib/db.php");
     include_once("lib/snmp.php");

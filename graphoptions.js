@@ -26,7 +26,7 @@
                 }
             },
             layout: {
-                improvedLayout: "true",
+                improvedLayout: true,
                 randomSeed: 0.79
             }
         };

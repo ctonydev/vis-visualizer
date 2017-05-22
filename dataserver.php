@@ -41,9 +41,9 @@ foreach($ips as $ip) {
 		*/
 		$node = new Node;
 		// build the node
-		$node->label =  getNodeName($ip);
+		$node->label = getNodeLabel($ip);
 		$node->id =  $ip->ip;
-		$node->title =  $ip->ip;
+		$node->title = getNodeTitle($ip);
 		if (1==$ip->laststatus){
 			$node->color = $colors["up-host"];
 		} else {

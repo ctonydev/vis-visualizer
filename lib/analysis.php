@@ -3,16 +3,31 @@
 include_once("lib/db.php");
 
 /*
+* get node title
+*/
+function getNodeTitle($ip){
+	$title = "<div>";
+	$title = $title."IP: ".$ip->ip."<br/>";
+	$title = $title."Last check: ".$ip->lastseen;
+	$title = $title."</div>";
+	return $title;
+}
+
+/*
 * get node name
 */
-function getNodeName($ip){
+function getNodeLabel($ip){
+	$label = "";
 	if (null!=$ip->hostname){
 		if($ip->hostname != $ip->ip){
-			$ret = shortname($ip->hostname);
-			return $ret;
+			$label = $label.shortname($ip->hostname);
+		} else {
+			$label = $label.$ip->ip;
 		}
+	} else {
+		$label = $label.$ip->ip;
 	}
-	return $ip->ip;
+	return $label;
 }
 
 function shortname($name){
