@@ -1,5 +1,25 @@
-pkg install apache24 mysql56-server mod_php56 php56-mysql php56-mysqli 
-pkg install php56-json
-pkg install php56-snmp-5.6.30
-pkg install php56-sockets-5.6.30 
+pkg install apache24 
+#pkg install mysql56-server 
+pkg install mod_php72
+#pkg install php72-mysql 
+pkg install php72-mysqli 
+pkg install php72-json
+pkg install php72-snmp
+pkg install php72-sockets
+
+create  /usr/local/etc/apache24/Includes/php.conf
+
+
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+<FilesMatch "\.phps$">
+    SetHandler application/x-httpd-php-source
+</FilesMatch>
+
+make info.php
+
+ echo '<?php phpinfo();  ?>' | tee -a /usr/local/www/apache24/data/info.php
+
+
 
