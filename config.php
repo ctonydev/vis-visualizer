@@ -1,7 +1,7 @@
 <?php
 
 $db = array();
-$db["servername"] = "localhost";
+$db["servername"] = "192.168.75.75";
 $db["username"]= "netvis";
 $db["password"] = "netvis";
 $db["dbname"] = "netvis";
