@@ -2,13 +2,15 @@
 include_once("config.php");
 
 function getSNMPSysName($ip) {
-	global $snmp_community;
-	return snmp_value(snmp2_get($ip, $snmp_community, "SNMPv2-MIB::sysName.0"));
+	global $snmp;
+//	echo $snmp["community"];
+//	echo $ip;
+	return snmp_value(snmp2_get($ip, $snmp["community"], "SNMPv2-MIB::sysName.0"));
 }
 
 function getSNMPSysDesc($ip) {
-	global $snmp_community;
-	return snmp_value(snmp2_get($ip, $snmp_community, "SNMPv2-MIB::sysDescr.0"));
+	global $snmp;
+	return snmp_value(snmp2_get($ip, $snmp["community"], "SNMPv2-MIB::sysDescr.0"));
 }
 
 function snmp_value($v){
@@ -24,15 +26,15 @@ function snmp_value($v){
 * pass IP to query SMMP on and host to connect these interfaces to in the DB
 */
 function getInterfacesOnSNMPHost($ip, $host) {
-	global $snmp_community;
+	global $snmp;
 
 	$ret = array();
 
-	$addresses =  snmp2_walk ($ip->ip, $snmp_community, "IP-MIB::ipAdEntAddr");
+	$addresses =  snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntAddr");
 //	var_dump($addresses);
 	$interfaceNumbers = snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntIfIndex");
 //	var_dump($interfaceNumbers);
-	$netmasks = snmp2_walk ($ip->ip, $snmp_community, "IP-MIB::ipAdEntNetMask");
+	$netmasks = snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntNetMask");
 //	var_dump($netmasks);
 	
 	$interface_address =  array();
@@ -50,9 +52,9 @@ function getInterfacesOnSNMPHost($ip, $host) {
 	for ( $i=1; $i<=$interface_count;$i++){
 		$inter = new IFace;
 		$inter->host = $host->sysname;
-		$name = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifDescr.".$i));
+		$name = snmp_value(snmp2_get($ip->ip, $snmp["community"], "IF-MIB::ifDescr.".$i));
 //		echo ($name."\n");
-		$index = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifIndex.".$i));
+		$index = snmp_value(snmp2_get($ip->ip, $snmp["community"], "IF-MIB::ifIndex.".$i));
 //		echo ($index."\n");
 		$inter->index = $index;
 		$inter->ip = $interface_address[$index];
