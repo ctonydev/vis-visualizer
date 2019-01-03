@@ -41,13 +41,13 @@ CREATE TABLE `interface` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `host` varchar(256) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `ip` varchar(45) NOT NULL,
-  `mask` varchar(45) NOT NULL,
-  `index` int(11) DEFAULT NULL,
+  `ip` varchar(45) DEFAULT '',
+  `mask` varchar(45) DEFAULT '',
+  `idx` varchar(10) DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `host_idx` (`host`),
   CONSTRAINT `host_fk` FOREIGN KEY (`host`) REFERENCES `host` (`sysname`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,7 @@ CREATE TABLE `networks` (
   `network` varchar(45) NOT NULL,
   `mask` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -92,4 +92,4 @@ CREATE TABLE `networks` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-02 22:42:30
+-- Dump completed on 2019-01-03  0:01:13
