@@ -5,12 +5,12 @@ function getSNMPSysName($ip) {
 	global $snmp;
 //	echo $snmp["community"];
 //	echo $ip;
-	return snmp_value(snmp2_get($ip, $snmp["community"], "SNMPv2-MIB::sysName.0"));
+	return snmp_value(snmp2_get($ip->ip, $snmp["community"], "SNMPv2-MIB::sysName.0"));
 }
 
 function getSNMPSysDesc($ip) {
 	global $snmp;
-	return snmp_value(snmp2_get($ip, $snmp["community"], "SNMPv2-MIB::sysDescr.0"));
+	return snmp_value(snmp2_get($ip->ip, $snmp["community"], "SNMPv2-MIB::sysDescr.0"));
 }
 
 function snmp_value($v){
@@ -31,11 +31,8 @@ function getInterfacesOnSNMPHost($ip, $host) {
 	$ret = array();
 
 	$addresses =  snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntAddr");
-//	var_dump($addresses);
 	$interfaceNumbers = snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntIfIndex");
-//	var_dump($interfaceNumbers);
 	$netmasks = snmp2_walk ($ip->ip, $snmp["community"], "IP-MIB::ipAdEntNetMask");
-//	var_dump($netmasks);
 	
 	$interface_address =  array();
 	$interface_masks =  array();
@@ -44,19 +41,19 @@ function getInterfacesOnSNMPHost($ip, $host) {
 		$interface_address[snmp_value($interfaceNumbers[$i])] = snmp_value($addresses[$i]);
 		$interface_masks[snmp_value($interfaceNumbers[$i])] = snmp_value($netmasks[$i]);
 	}
-//	var_dump($interface_address);
-//	var_dump($interface_masks);
+	var_dump($interface_address);
+	var_dump($interface_masks);
 
-	$interface_count = snmp_value(snmp2_get($ip->ip, $snmp_community, "IF-MIB::ifNumber.0"));
-//	echo $interface_count."\n";
+	$interface_count = count($interface_address);
+	echo $interface_count."\n";
 	for ( $i=1; $i<=$interface_count;$i++){
 		$inter = new IFace;
 		$inter->host = $host->sysname;
 		$name = snmp_value(snmp2_get($ip->ip, $snmp["community"], "IF-MIB::ifDescr.".$i));
-//		echo ($name."\n");
+//		echo ("name: ".$name."\n");
 		$index = snmp_value(snmp2_get($ip->ip, $snmp["community"], "IF-MIB::ifIndex.".$i));
-//		echo ($index."\n");
-		$inter->index = $index;
+//		echo ("index: ".$index."\n");
+		$inter->idx =  $index;
 		$inter->ip = $interface_address[$index];
 		$inter->name = $name;
 		$inter->mask = $interface_masks[$index];
@@ -67,8 +64,6 @@ function getInterfacesOnSNMPHost($ip, $host) {
 
 	return $ret;
 }
-
-
 
 ?>
 

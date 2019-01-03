@@ -12,11 +12,11 @@
 
     foreach($ips as $ip) { {
         	echo "ip: ".$ip->ip."\n";
-        	$sysname = getSNMPSysName($ip->ip);
+        	$sysname = getSNMPSysName($ip);
         	if (false!=$sysname){
 	        	$host = new Host;
 	        	$host->sysname = trim($sysname);
-	        	$sysdesc = getSNMPSysDesc($ip->ip);
+	        	$sysdesc = getSNMPSysDesc($ip);
 	        	if (false !=$sysdesc){
 	        		$host->sysdesc = trim($sysdesc);
 	        	}
@@ -24,11 +24,11 @@
 
 	        	eraseInterfaces($host);
 	        	$interfaces = getInterfacesOnSNMPHost($ip, $host);
-	        //	var_dump($interfaces);
+	        	var_dump($interfaces);
 
 	        	for ($i=0; $i<count($interfaces);$i++){
 	        		$iface =$interfaces[$i];
-	        		if (null != $iface->ip){
+	        		if (null != $iface->name){
 	        			if ("127.0.0.1" !=$iface->ip){
 	        				saveInterface($iface);
 	        			}
